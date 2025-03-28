@@ -1,1 +1,77 @@
-// app global css in SCSS form
+@import "./fonts.scss";
+
+:root {
+  --q-color-primary: #65558f;
+  --q-color-secondary: #26a69a;
+  --q-color-accent: #9c27b0;
+  --q-color-error: #c10015;
+
+  --placeholder-color: #625b71;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+body {
+  font-family: "Roboto Regular";
+  font-size: 16px;
+  color: #49454f;
+}
+
+.form-field__wrapper {
+  position: relative;
+
+  &:has(.q-field--focused) .form-field__label {
+    color: var(--q-color-primary);
+  }
+
+  &:has(.q-field--error) .form-field__label {
+    color: var(--q-color-error);
+  }
+
+  .q-field__control {
+    &:before {
+      border-radius: 4px;
+      border: 1px solid #79747e;
+    }
+  }
+
+  & .q-field--focused {
+    .q-field__control {
+      &::after {
+        border-width: 3px;
+      }
+    }
+  }
+
+  &:hover {
+    .q-field__control {
+      &:before {
+        border-radius: 4px;
+        border: 1px solid #1d1b20;
+      }
+
+      &::after {
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+.form-field__label {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 500;
+  color: #49454f;
+  background-color: #fef7ff;
+  padding: 0 4px;
+}
